@@ -1,0 +1,59 @@
+常用
+git add README.md 
+
+git remote -v
+
+git add README.md 
+
+git commit -m "22222222222"
+
+git push -u origin main
+
+git push origin main
+
+git log
+
+git reset --hard HEAD^
+
+git reflog 
+
+创建并转到
+git switch -c <>
+git checkout -b <>
+
+创建分支
+git branch <>
+
+查看分支
+git branch
+
+切换分支
+git checkout dev 
+git switch dev
+
+合并分支 命令用于合并指定分支到当前分支
+git merge dev
+
+删除分支
+git branch -d dev
+
+初始
+git config --global user.name hqw
+git config --global user.email 1648218865@qq.com
+
+创建远程仓库
+Windows PowerShell
+ssh-keygen -t rsa -C "1648218865@qq.com"
+在git 添加SSH密钥，创建仓库
+
+echo "# pythonObTest" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:hqw-source/pythonObTest.git
+git push -u origin main
+直接推送
+git remote add origin git@github.com:hqw-source/pythonObTest.git
+git branch -M main
+git push -u origin main

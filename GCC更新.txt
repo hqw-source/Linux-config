@@ -1,0 +1,20 @@
+// Toolchain测试PPA提供了最新版本的GCC编译器
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt update
+// 安装GCC 9或更高版本，这里以GCC 9为例：
+sudo apt install gcc-9 g++-9
+// 如果你已经尝试了更新GCC到新版本，但系统仍然显示旧版本（如7.5.0）
+g++ --version
+// 确认新版本是否已安装
+g++-9 --version
+
+如果新版本的GCC已经安装，但默认的g++命令仍然指向旧版本，你可以使用update-alternatives来更新默认设置：
+
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 40
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 60
+sudo update-alternatives --config g++
+————————————————
+
+                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                        
+原文链接：https://blog.csdn.net/weixin_45390670/article/details/142363587

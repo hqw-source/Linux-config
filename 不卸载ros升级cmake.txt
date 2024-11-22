@@ -1,0 +1,16 @@
+第一步：使用ppa升级cmake至3.2.2 
+sudo apt-get install software-properties-common 
+sudo add-apt-repository ppa:george-edison55/cmake-3.x 
+sudo apt-get update 
+sudo apt-get upgrade 
+//查看最终版本： 
+cmake --version 
+这时可能会有如下的报错： 
+CMake Error: Could not find CMAKE_ROOT !!! 
+CMake has most likely not been installed correctly. 
+Modules directory not found in 
+/usr/lib 
+
+
+sudo apt-get install cmake 
+cmake --version 

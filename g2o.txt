@@ -1,0 +1,57 @@
+G2O的全称为：General Graphic Optimization，通用图优化
+
+// Eigen3安装:
+sudo apt update
+sudo apt install libeigen3-dev
+// OpenMP安装：
+sudo apt install build-essential
+// PCL安装：
+sudo apt install libpcl-dev
+// g2o安装
+// 安装依赖项
+sudo apt-get install qt5-qmake qt5-default libqglviewer-dev-qt5 libsuitesparse-dev libcxsparse3 libcholmod3
+// 在g2o-master文件目录下，把g2o-master文件夹名字改成g2o
+mkdir build
+cd build
+cmake ..
+make -j4        #-j8会快一点
+sudo make install
+
+报错：
+/home/nvidia/g2o/g2o/stuff/filesys_tools.cpp:29:10: fatal error: filesystem: 没有那个文件或目录
+#include <filesystem>
+^~~~~~~~~~~~
+compilation terminated.
+g2o/stuff/CMakeFiles/stuff.dir/build.make:117: recipe for target 'g2o/stuff/CMakeFiles/stuff.dir/filesys_tools.cpp.o' failed
+make[2]: *** [g2o/stuff/CMakeFiles/stuff.dir/filesys_tools.cpp.o] Error 1
+CMakeFiles/Makefile2:1123: recipe for target 'g2o/stuff/CMakeFiles/stuff.dir/all' failed
+make[1]: *** [g2o/stuff/CMakeFiles/stuff.dir/all] Error 2
+Makefile:155: recipe for target 'all' failed
+make: *** [all] Error 2
+
+原因：
+当前安装的GCC版本是7.5.0，这是Ubuntu 18.04 LTS版本自带的默认GCC版本。虽然GCC 7支持大部分C++17特性，但不是全部。为了完全支持C++17，建议至少使用GCC 8或更高版本。
+
+尝试了很多办法，发现更新g++比较好：
+版本是7.5,不太行
+# 查看当前版本
+g++ --version
+
+安装新版本
+// Toolchain测试PPA提供了最新版本的GCC编译器
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt update
+// 安装GCC 9或更高版本，这里以GCC 9为例：
+sudo apt install gcc-9 g++-9
+// 如果你已经尝试了更新GCC到新版本，但系统仍然显示旧版本（如7.5.0）
+g++ --version
+// 确认新版本是否已安装
+g++-9 --version
+
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 40
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 60
+sudo update-alternatives --config g++
+
+安装
+
+sudo make install
