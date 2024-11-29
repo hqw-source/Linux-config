@@ -12,10 +12,22 @@ git push -u origin main
 git push origin main
 
 git log
+git log --graph --pretty=oneline --abbrev-commit
+git log --graph
 
 git reset --hard HEAD^
 
 git reflog 
+
+临时保存
+git stash
+git stash list
+一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
+
+另一种方式是用git stash pop，恢复的同时把stash内容也删了：
+
+复制一个特定的提交到当前分支
+git cherry-pick 4c805e2
 
 创建并转到
 git switch -c <>
